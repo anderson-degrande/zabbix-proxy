@@ -1,4 +1,4 @@
-version: '3'
+version: '4'
 services:
   zabbix-proxy-sqlite3:
     image: lgti/zabbix-proxy-sqlite3:centos-5.2.6
@@ -13,7 +13,7 @@ services:
     environment:
      - 'ZBX_SERVER_HOST=zabbix.smarapd.com.br'
      - 'ZBX_SERVER_PORT=10051'
-     - 'ZBX_HOSTNAME=proxy-pmbertioga'
+     - 'ZBX_HOSTNAME=proxy-pmituiutaba'
      - 'ZBX_PROXYLOCALBUFFER=24'
      - 'ZBX_PROXYOFFLINEBUFFER=24'
      - 'ZBX_PROXYHEARTBEATFREQUENCY=60'
@@ -42,6 +42,17 @@ services:
      - 'ZBX_TLSPSKIDENTITY=proxy_psk'
      - 'ZBX_TLSCONNECT=psk'
      - 'ZBX_TLSACCEPT=psk'
+     - 'ZBX_JAVAGATEWAY=zabbix-java-gateway'
+     - 'ZBX_JAVAGATEWAYPORT=10052'
+     - 'ZBX_STARTJAVAPOLLERS=5'
+     - 'ZBX_JAVAGATEWAY_ENABLE=true'
+  zabbix-java-gateway:
+    image: zabbix/zabbix-java-gateway:5.2.6-ubuntu
+    ports:
+      - '10052:10052'
+    environment:
+      - 'ZBX_START_POLLERS=5'
+      - 'ZBX_TIMEOUT=30'
 volumes:
   zabbix-proxy:
-
+  
