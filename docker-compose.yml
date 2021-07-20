@@ -1,4 +1,4 @@
-version: '4'
+version: '3'
 services:
   zabbix-proxy-sqlite3:
     image: lgti/zabbix-proxy-sqlite3:centos-5.2.6
